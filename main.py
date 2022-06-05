@@ -1,18 +1,20 @@
 import discord
+from discord.ext import commands
+import music_commands
+import embed_commands
+import asyncio
 
-bot = discord.Client()
+import platform
+if platform.system()=='Windows':
+    asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
 
-@bot.event
+client = commands.Bot(command_prefix = "?", intents = discord.Intents.all())
+
+music_commands.setup(client)
+embed_commands.setup(client)
+
+@client.event
 async def on_ready():
-    print(f'Bot logged in as {bot.user}')
+    print(f'Bot logged in as {client.user}')
 
-@bot.event
-async def on_message(message):
-    if message.author == bot.user:
-        return
-    if message.content == "$hello":
-        await message.channel.send("Hello! I am a bot.")
-    if message.content == "what's something that runs fast and plays basketball well":
-        await message.channel.send("a stinkin nigger")
-
-bot.run("OTgyNzE4MjExNzA1NDE3NzYz.Ga0Rf9.6xhPWsHHvk_nP5acfu1MiE--vun24XKCReSRGo")
+client.run("OTgyNzE4MjExNzA1NDE3NzYz.Ga0Rf9.6xhPWsHHvk_nP5acfu1MiE--vun24XKCReSRGo")
