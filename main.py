@@ -3,6 +3,12 @@ from discord.ext import commands
 import music_commands
 import embed_commands
 import asyncio
+import os
+
+from dotenv import load_dotenv
+load_dotenv()
+
+BOT_KEY = os.getenv('BOT_TOKEN')
 
 import platform
 if platform.system()=='Windows':
@@ -17,4 +23,4 @@ embed_commands.setup(client)
 async def on_ready():
     print(f'Bot logged in as {client.user}')
 
-client.run("OTgyNzE4MjExNzA1NDE3NzYz.Ga0Rf9.6xhPWsHHvk_nP5acfu1MiE--vun24XKCReSRGo")
+client.run(BOT_KEY)
