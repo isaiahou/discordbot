@@ -7,11 +7,11 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from dotenv import load_dotenv
 
-PATH = "C:\Program Files (x86)\chromedriver.exe"
-
-service = Service(PATH)
+service = Service(os.getenv('PATH'))
 chrome_options = Options()
 chrome_options.add_argument("--headless")
+chrome_options.add_argument("--disable-dev-shm-usage")
+chrome_options.add_arugment("--no-sandbox")
 driver = webdriver.Chrome(service = service, options = chrome_options)
 
 load_dotenv()
