@@ -11,7 +11,7 @@ from dotenv import load_dotenv
 service = Service(os.environ['PATH'])
 chrome_options = Options()
 # Remove this line if running locally.
-chrome_options.binary_location = os.environ['BIN']
+chrome_options.binary_location = os.environ.get('BIN')
 chrome_options.add_argument("--headless")
 chrome_options.add_argument("--no-sandbox")
 chrome_options.add_argument("--disable-dev-shm-usage")
@@ -20,8 +20,8 @@ driver = webdriver.Chrome(service = service, options = chrome_options)
 load_dotenv()
 # username = os.getenv('LC_USER')
 # password = os.getenv('LC_PASS')
-username = os.environ['LC_USER']
-password = os.environ['LC_PASS']
+username = os.environ.get('LC_USER')
+password = os.environ.get('LC_PASS')
 
 class ProblemFinder:
 

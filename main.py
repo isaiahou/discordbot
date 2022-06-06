@@ -10,7 +10,7 @@ import os
 # load_dotenv()
 
 # BOT_KEY = os.getenv('BOT_TOKEN')
-BOT_KEY = os.environ['BOT_TOKEN']
+BOT_KEY = os.environ.get('BOT_TOKEN')
 
 # import platform
 # if platform.system()=='Windows':
