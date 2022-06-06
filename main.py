@@ -9,6 +9,8 @@ import os
 # from dotenv import load_dotenv
 # load_dotenv()
 
+print("test")
+print(os.environ.get('BOT_TOKEN'))
 # BOT_KEY = os.getenv('BOT_TOKEN')
 BOT_KEY = os.environ.get('BOT_TOKEN')
 

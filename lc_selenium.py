@@ -7,7 +7,6 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from dotenv import load_dotenv
 
-print("test")
 # service = Service(os.getenv('PATH'))
 service = Service(os.environ.get('PATH'))
 chrome_options = Options()
