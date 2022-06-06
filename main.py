@@ -6,10 +6,11 @@ import lc_commands
 import asyncio
 import os
 
-from dotenv import load_dotenv
-load_dotenv()
+# from dotenv import load_dotenv
+# load_dotenv()
 
-BOT_KEY = os.getenv('BOT_TOKEN')
+# BOT_KEY = os.getenv('BOT_TOKEN')
+BOT_KEY = os.environ.get('BOT_TOKEN')
 
 import platform
 if platform.system()=='Windows':
