@@ -1,1 +1,1 @@
-web: python main.py
+reminder: python src/main.py
