@@ -1,0 +1,3 @@
+selenium
+PyNaCl
+discord.py
