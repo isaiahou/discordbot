@@ -9,6 +9,8 @@ from dotenv import load_dotenv
 
 service = Service(os.getenv('PATH'))
 chrome_options = Options()
+# Remove this line if running locally.
+chrome_options.binary_location = os.getenv('BIN')
 chrome_options.add_argument("--headless")
 chrome_options.add_argument("--disable-dev-shm-usage")
 chrome_options.add_arugment("--no-sandbox")
