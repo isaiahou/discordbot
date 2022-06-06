@@ -8,7 +8,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from dotenv import load_dotenv
 
 # service = Service(os.getenv('PATH'))
-service = Service(os.environ.get('PATH'))
+service = Service(os.environ['PATH'])
 chrome_options = Options()
 # Remove this line if running locally.
 chrome_options.binary_location = os.environ['BIN']

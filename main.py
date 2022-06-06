@@ -12,9 +12,9 @@ import os
 # BOT_KEY = os.getenv('BOT_TOKEN')
 BOT_KEY = os.environ['BOT_TOKEN']
 
-import platform
-if platform.system()=='Windows':
-    asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
+# import platform
+# if platform.system()=='Windows':
+#     asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
 
 client = commands.Bot(command_prefix = "?", intents = discord.Intents.all())
 
