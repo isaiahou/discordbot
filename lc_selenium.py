@@ -8,6 +8,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 # COMMANDS FOR RUNNING LOCALLY
 # from dotenv import load_dotenv
+# load_dotenv()
 
 service = Service(os.environ.get('CHROMEDRIVER_PATH'))
 chrome_options = Options()
@@ -18,8 +19,6 @@ chrome_options.add_argument("--no-sandbox")
 chrome_options.add_argument("--disable-dev-shm-usage")
 driver = webdriver.Chrome(service = service, options = chrome_options)
 
-# COMMANDS FOR RUNNING LOCALLY
-# load_dotenv()
 username = os.environ.get('LC_USER')
 password = os.environ.get('LC_PASS')
 
@@ -59,7 +58,7 @@ class ProblemFinder:
     def find_daily(self):
         link = "https://leetcode.com/problemset/all/"
         driver.get(link)
-        next_link = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, '.mx-2.py-[11px]')))
+        next_link = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, '//div[@role="cell"]/a[1]')))
         next_link.click()
         try:
             try:
@@ -79,7 +78,7 @@ class ProblemFinder:
             except:
                 information = []
                 element = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, '.content__u3I1.question-content__JfgR p')))
-                difficulty = driver.find_element(By.CLASS_NAME, 'diff').text
+                difficulty = driver.find_element(By.XPATH, '//div[@class="css-10o4wqw"]/div[1]').text
                 information.append(driver.title)
                 information.append(driver.current_url)
                 information.append(element.text)

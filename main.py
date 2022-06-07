@@ -1,4 +1,5 @@
 import discord
+import asyncio
 from discord.ext import commands
 import music_commands
 import embed_commands
@@ -9,12 +10,11 @@ import os
 # from dotenv import load_dotenv
 # load_dotenv()
 
-BOT_KEY = os.environ.get('BOT_TOKEN')
-
-# COMMANDS FOR RUNNING LOCALLY
 # import platform
 # if platform.system()=='Windows':
 #     asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
+
+BOT_KEY = os.environ.get('BOT_TOKEN')
 
 client = commands.Bot(command_prefix = "?", intents = discord.Intents.all())
 
