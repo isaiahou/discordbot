@@ -25,7 +25,7 @@ password = os.environ.get('LC_PASS')
 
 class ProblemFinder:
 
-    def __init__(self, difficulty = None):
+    def __init__(self, difficulty = "easy"):
         self.difficulty = difficulty.upper()
 
     def find_problem(self):
