@@ -9,7 +9,7 @@ class music(commands.Cog):
     @commands.command()
     async def join(self, ctx):
         if ctx.author.voice is None:
-            await ctx.send("User not in voice channel.")
+            await ctx.send("Please join a voice channel.")
         vc = ctx.author.voice.channel
         if ctx.voice_client is None:
             await vc.connect()
@@ -23,7 +23,7 @@ class music(commands.Cog):
     @commands.command()
     async def play(self, ctx, url):
         if ctx.author.voice is None:
-            await ctx.send("User not in voice channel.")
+            await ctx.send("Please join a voice channel.")
         vc = ctx.author.voice.channel
         if ctx.voice_client is None:
             await vc.connect()
@@ -43,12 +43,12 @@ class music(commands.Cog):
     @commands.command()
     async def pause(self, ctx):
         await ctx.voice_client.pause()
-        await ctx.send("Paused.")
+        await ctx.send("Audio playback has been paused.")
 
     @commands.command()
     async def resume(self, ctx):
         await ctx.voice_client.resume()
-        await ctx.send("Resume.")
+        await ctx.send("Audio playback has been resumed.")
         
 def setup(client):
     client.add_cog(music(client))

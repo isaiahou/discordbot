@@ -3,15 +3,15 @@ from discord.ext import commands
 import music_commands
 import embed_commands
 import lc_commands
-import asyncio
 import os
 
+# COMMANDS FOR RUNNING LOCALLY
 # from dotenv import load_dotenv
 # load_dotenv()
 
-# BOT_KEY = os.getenv('BOT_TOKEN')
 BOT_KEY = os.environ.get('BOT_TOKEN')
 
+# COMMANDS FOR RUNNING LOCALLY
 # import platform
 # if platform.system()=='Windows':
 #     asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
