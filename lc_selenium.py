@@ -59,7 +59,7 @@ class ProblemFinder:
     def find_daily(self):
         link = "https://leetcode.com/problemset/all/"
         driver.get(link)
-        next_link = driver.find_element(By.XPATH, '//div[@roll="cell"]/a').get_attribute('href')
+        next_link = driver.find_element(By.XPATH, '//div[@role="cell"]/a').get_attribute('href')
         next_link.click()
         try:
             try:
