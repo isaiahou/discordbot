@@ -23,14 +23,14 @@ class leetcode(commands.Cog):
         while result is None:
             await ctx.send("LeetCode fed us a premium problem. We will try again...")
             result = finder.find_problem()
-        embed = discord.Embed(title = result[0], url = result[1], description = result[2], color = color)
-        embed.set_thumbnail(url = "https://ih1.redbubble.net/image.662995398.2784/pp,840x830-pad,1000x1000,f8f8f8.u3.jpg")
+        embed = discord.Embed(title = result[0].removesuffix(' - LeetCode'), url = result[1], description = result[2], color = color)
+        embed.set_thumbnail(url = "https://res.cloudinary.com/crunchbase-production/image/upload/c_lpad,h_256,w_256,f_auto,q_auto:eco,dpr_1/83facdeba5b924cb3b1a")
         await ctx.send(embed = embed)
     
     @commands.command()
     async def daily(self, ctx):
         finder = ProblemFinder()
-        result = finder.find_problem()
+        result = finder.find_daily()
         if result is None:
             await ctx.send("Unfortunately, the daily problem is a Premium problem today.")
             return
@@ -41,8 +41,8 @@ class leetcode(commands.Cog):
             color = discord.Color.orange()
         else:
             color = discord.Color.red()
-        embed = discord.Embed(title = result[0], url = result[1], description = result[2], color = color)
-        embed.set_thumbnail(url = "https://ih1.redbubble.net/image.662995398.2784/pp,840x830-pad,1000x1000,f8f8f8.u3.jpg")
+        embed = discord.Embed(title = result[0].removesuffix(' - LeetCode'), url = result[1], description = result[2], color = color)
+        embed.set_thumbnail(url = "https://res.cloudinary.com/crunchbase-production/image/upload/c_lpad,h_256,w_256,f_auto,q_auto:eco,dpr_1/83facdeba5b924cb3b1a")
         await ctx.send(embed = embed)
 
 def setup(client):
