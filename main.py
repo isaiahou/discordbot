@@ -10,9 +10,9 @@ import os
 # from dotenv import load_dotenv
 # load_dotenv()
 
-# import platform
-# if platform.system()=='Windows':
-#     asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
+import platform
+if platform.system()=='Windows':
+    asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
 
 BOT_KEY = os.environ.get('BOT_TOKEN')
 

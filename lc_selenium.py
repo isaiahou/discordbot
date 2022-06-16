@@ -64,13 +64,13 @@ class ProblemFinder:
     def find_daily(self):
         link = "https://leetcode.com/problemset/all/"
         driver.get(link)
+        xpath = '//div[@role="cell"]/a[1]'
         try:
-            next_link = WebDriverWait(driver, 10).until(
-                EC.element_to_be_clickable((By.XPATH, '//div[@role="cell"]/a[1]')))
+            element = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, xpath)))
+            element.click()
         except:
-            next_link = WebDriverWait(driver, 10).until(
-                EC.element_to_be_clickable((By.XPATH, '//div[@role="cell"]/a[1]')))
-        next_link.click()
+            element = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, xpath)))
+            element.click()
         try:
             try:
                 user_element = WebDriverWait(driver, 10).until(
