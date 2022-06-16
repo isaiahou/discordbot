@@ -16,11 +16,12 @@ import os
 
 BOT_KEY = os.environ.get('BOT_TOKEN')
 
-client = commands.Bot(command_prefix = "?", intents = discord.Intents.all())
+client = commands.Bot(command_prefix="?", intents=discord.Intents.all())
 
 music_commands.setup(client)
 embed_commands.setup(client)
 lc_commands.setup(client)
+
 
 @client.event
 async def on_ready():

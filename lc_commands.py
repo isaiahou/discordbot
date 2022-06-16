@@ -2,10 +2,11 @@ import discord
 from lc_selenium import ProblemFinder
 from discord.ext import commands
 
+
 class leetcode(commands.Cog):
     def __init__(self, client):
         self.client = client
-    
+
     @commands.command()
     async def find(self, ctx, difficulty):
         acceptable_commands = ["easy", "medium", "hard"]
@@ -23,10 +24,12 @@ class leetcode(commands.Cog):
         while result is None:
             await ctx.send("LeetCode fed us a premium problem. We will try again...")
             result = finder.find_problem()
-        embed = discord.Embed(title = result[0].removesuffix(' - LeetCode'), url = result[1], description = result[2], color = color)
-        embed.set_thumbnail(url = "https://res.cloudinary.com/crunchbase-production/image/upload/c_lpad,h_256,w_256,f_auto,q_auto:eco,dpr_1/83facdeba5b924cb3b1a")
-        await ctx.send(embed = embed)
-    
+        embed = discord.Embed(title=result[0].removesuffix(
+            ' - LeetCode'), url=result[1], description=result[2], color=color)
+        embed.set_thumbnail(
+            url="https://res.cloudinary.com/crunchbase-production/image/upload/c_lpad,h_256,w_256,f_auto,q_auto:eco,dpr_1/83facdeba5b924cb3b1a")
+        await ctx.send(embed=embed)
+
     @commands.command()
     async def daily(self, ctx):
         finder = ProblemFinder()
@@ -41,9 +44,12 @@ class leetcode(commands.Cog):
             color = discord.Color.orange()
         else:
             color = discord.Color.red()
-        embed = discord.Embed(title = result[0].removesuffix(' - LeetCode'), url = result[1], description = result[2], color = color)
-        embed.set_thumbnail(url = "https://res.cloudinary.com/crunchbase-production/image/upload/c_lpad,h_256,w_256,f_auto,q_auto:eco,dpr_1/83facdeba5b924cb3b1a")
-        await ctx.send(embed = embed)
+        embed = discord.Embed(title=result[0].removesuffix(
+            ' - LeetCode'), url=result[1], description=result[2], color=color)
+        embed.set_thumbnail(
+            url="https://res.cloudinary.com/crunchbase-production/image/upload/c_lpad,h_256,w_256,f_auto,q_auto:eco,dpr_1/83facdeba5b924cb3b1a")
+        await ctx.send(embed=embed)
+
 
 def setup(client):
     client.add_cog(leetcode(client))

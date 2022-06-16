@@ -17,37 +17,43 @@ chrome_options.binary_location = os.environ.get('GOOGLE_CHROME_BIN')
 chrome_options.add_argument("--headless")
 chrome_options.add_argument("--no-sandbox")
 chrome_options.add_argument("--disable-dev-shm-usage")
-driver = webdriver.Chrome(service = service, options = chrome_options)
+driver = webdriver.Chrome(service=service, options=chrome_options)
 
 username = os.environ.get('LC_USER')
 password = os.environ.get('LC_PASS')
 
+
 class ProblemFinder:
 
-    def __init__(self, difficulty = "easy"):
+    def __init__(self, difficulty="easy"):
         self.difficulty = difficulty.upper()
 
     def find_problem(self):
-        link = "https://leetcode.com/problemset/all/?difficulty={}&page=1".format(self.difficulty)
+        link = "https://leetcode.com/problemset/all/?difficulty={}&page=1".format(
+            self.difficulty)
         driver.get(link)
         next_link = driver.find_element(By.XPATH, '//span[text()="Pick One"]')
         next_link.click()
         try:
             try:
-                user_element = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.NAME, 'login')))
+                user_element = WebDriverWait(driver, 10).until(
+                    EC.presence_of_element_located((By.NAME, 'login')))
                 user_element.send_keys(username)
                 password_element = driver.find_element(By.NAME, 'password')
                 password_element.send_keys(password)
-                driver.find_element(By.CSS_SELECTOR, '.btn-content__2V4r').click()
+                driver.find_element(
+                    By.CSS_SELECTOR, '.btn-content__2V4r').click()
                 information = []
-                element = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, '.content__u3I1.question-content__JfgR p')))
+                element = WebDriverWait(driver, 10).until(EC.presence_of_element_located(
+                    (By.CSS_SELECTOR, '.content__u3I1.question-content__JfgR p')))
                 information.append(driver.title)
                 information.append(driver.current_url)
                 information.append(element.text)
                 return information
             except:
                 information = []
-                element = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, '.content__u3I1.question-content__JfgR p')))
+                element = WebDriverWait(driver, 10).until(EC.presence_of_element_located(
+                    (By.CSS_SELECTOR, '.content__u3I1.question-content__JfgR p')))
                 information.append(driver.title)
                 information.append(driver.current_url)
                 information.append(element.text)
@@ -58,17 +64,21 @@ class ProblemFinder:
     def find_daily(self):
         link = "https://leetcode.com/problemset/all/"
         driver.get(link)
-        next_link = WebDriverWait(driver, 10).until(EC.elementToBeClickable((By.XPATH, '//div[@role="cell"]/a[1]')))
+        next_link = WebDriverWait(driver, 10).until(
+            EC.element_to_be_clickable((By.XPATH, '//div[@role="cell"]/a[1]')))
         next_link.click()
         try:
             try:
-                user_element = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.NAME, 'login')))
+                user_element = WebDriverWait(driver, 10).until(
+                    EC.presence_of_element_located((By.NAME, 'login')))
                 user_element.send_keys(username)
                 password_element = driver.find_element(By.NAME, 'password')
                 password_element.send_keys(password)
-                driver.find_element(By.CSS_SELECTOR, '.btn-content__2V4r').click()
+                driver.find_element(
+                    By.CSS_SELECTOR, '.btn-content__2V4r').click()
                 information = []
-                element = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, '.content__u3I1.question-content__JfgR p')))
+                element = WebDriverWait(driver, 10).until(EC.presence_of_element_located(
+                    (By.CSS_SELECTOR, '.content__u3I1.question-content__JfgR p')))
                 difficulty = driver.find_element(By.CLASS_NAME, 'diff').text
                 information.append(driver.title)
                 information.append(driver.current_url)
@@ -77,8 +87,10 @@ class ProblemFinder:
                 return information
             except:
                 information = []
-                element = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, '.content__u3I1.question-content__JfgR p')))
-                difficulty = driver.find_element(By.XPATH, '//div[@class="css-10o4wqw"]/div[1]').text
+                element = WebDriverWait(driver, 10).until(EC.presence_of_element_located(
+                    (By.CSS_SELECTOR, '.content__u3I1.question-content__JfgR p')))
+                difficulty = driver.find_element(
+                    By.XPATH, '//div[@class="css-10o4wqw"]/div[1]').text
                 information.append(driver.title)
                 information.append(driver.current_url)
                 information.append(element.text)
